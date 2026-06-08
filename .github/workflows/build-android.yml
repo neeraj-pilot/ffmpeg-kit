@@ -54,7 +54,7 @@ jobs:
       - name: run the build script
         env:
           APP_ALLOW_MISSING_DEPS: "true"
-        run: ./android.sh --enable-gpl --enable-android-zlib --enable-zimg --enable-x264 --disable-x86 --disable-x86-64
+        run: ./android.sh --enable-gpl --enable-android-zlib --enable-zimg --enable-x264 --enable-android-media-codec --disable-x86 --disable-x86-64
       - name: validate android aar
         env:
           REQUIRE_CI_PATH: "1"
