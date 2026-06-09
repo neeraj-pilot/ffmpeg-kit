@@ -301,7 +301,11 @@ for library in {0..61}; do
       CONFIGURE_POSTFIX+=" --enable-zlib"
       ;;
     android-media-codec)
-      CONFIGURE_POSTFIX+=" --enable-mediacodec"
+      # --enable-mediacodec wires the hwaccel + decoder side, but because
+      # the build runs with --disable-autodetect, the encoders are NOT
+      # picked up automatically. Enable them explicitly so applications
+      # can use -c:v h264_mediacodec / hevc_mediacodec for hardware encode.
+      CONFIGURE_POSTFIX+=" --enable-mediacodec --enable-encoder=h264_mediacodec --enable-encoder=hevc_mediacodec"
       ;;
     esac
   else
